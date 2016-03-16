@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dirlist="/lib /lib64 /root/.aptitude .bash_history .bashrc .cache .lesshst .profile .rnd .viminfo"
+dirlist="/lib /lib64 /usr /bin /sbin /etc"
 label="0;|65535;"
 
 if [ $# -eq 1 ];then
@@ -13,6 +13,6 @@ if [ $# -eq 2 ];then
 fi
 
 for d in "$dirlist"; do
-	find $d -exec /usr/bin/setfattr -n security.difc -v "$2" '{}' \; 
+	find $d -exec /usr/bin/setfattr -n security.difc -v "$label" '{}' \; 
 done
 
